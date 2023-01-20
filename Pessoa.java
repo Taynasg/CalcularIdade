@@ -1,22 +1,45 @@
-public class Pessoa {
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
+//Isaac Newton(nascido em 4/1/1643
+//Albert Einstein(nascido em 14/3/1879)
+
+public class Pessoa {
+    Scanner scanner = new Scanner(System.in);
     private int idade;
     private int dia;
     private int mes;
     private int ano;
 
-    public void caucularIdade(){
+    public String caucularIdade() {
+
+        LocalDate data = LocalDate.now();
+        DateTimeFormatter dataAtualFormatada = DateTimeFormatter.ofPattern("dd/MM/yyyy \n");
+
+        System.out.println("A data de hoje é " + data.format(dataAtualFormatada));
+
+        LocalDate dataDeNascimentoDoIsaacNewton  = data.minusYears(380);
+        LocalDate dataDeNascimentoDoAlbertEinstein = data.minusYears(143);
+
+        Period newton = Period.between(data, dataDeNascimentoDoAlbertEinstein);
+        Period eintein = Period.between(data, dataDeNascimentoDoIsaacNewton);
+
+        return "Atualmente Isaac Newton teria " + newton.multipliedBy(-1).getYears() + " anos \n" +
+        "Atualmente Albert Einstein teria " + eintein.multipliedBy(-1).getYears() + " anos";
+    }
+
+    public void informaIdade() {
+
 
     }
 
-    public void informaIdade(){
+    public void informaNome() {
 
     }
 
-    public void informaNome(){
-
-    }
-    public void ajustaDataDeNascimento(){
+    public void ajustaDataDeNascimento() {
 
     }
 
